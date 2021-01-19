@@ -28,7 +28,7 @@ then
 fi
 
 # Install required packages
-apt-get -y install chromium-browser xdotool
+apt-get -y install chromium-browser xdotool x11-xserver-utils
 
 # Get kiosk release
 wget "$GRAFANAKIOSKOS_KIOSKRELEASE" -O /usr/local/bin/grafana-kiosk

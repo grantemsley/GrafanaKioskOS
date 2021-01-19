@@ -24,8 +24,8 @@ then
 	apt remove -y --purge firmware-atheros firmware-brcm80211 firmware-libertas firmware-misc-nonfree firmware-realtek flashrom
 	apt remove -y --purge strace gcc gdb make perl perl-modules-5.28 triggerhappy plymouth v4l-utils tasksel popularity-contest
 	apt remove -y --purge libglib2.0-data libc-l10n gdbm-l10n ncdu pciutils usb-modeswitch usb-modeswitch-data rsyslog
-	apt remove -y --purge bash-completion bzip2 console-setup console-setup-linux cpp debconf-i18n dmidecode dpkg-dev
-	apt remove -y --purge ed htop x11-xserver-utils xorg-docs-core info install-info alsa-utils raspi-config desktop-base
+	apt remove -y --purge bash-completion bzip2 console-setup console-setup-linux debconf-i18n dmidecode dpkg-dev
+	apt remove -y --purge ed htop xorg-docs-core info install-info alsa-utils raspi-config desktop-base
 	apt remove -y --purge rsync fuse rpi-update curl pigz python2 python2.7 rpi-eeprom rpi-eeprom-images xz-utils xbitmaps
 
 	#Mark all libraries as autoinstalled, so they are autoremoved when no longer required.
