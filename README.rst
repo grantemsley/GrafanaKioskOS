@@ -24,7 +24,7 @@ Building
 Build on a Ubuntu, Debian or Raspbian system with::
 
     sudo apt install coreutils p7zip-full qemu-user-static
-    git clone https://github.comg/uysoft/CustomPiOS.git
+    git clone https://github.com/guysoft/CustomPiOS.git
     git clone https://github.com/grantemsley/GrafanaKioskOS.git
     cd GrafanaKioskOS/src/image
     wget -c --trust-server-names 'https://downloads.raspberrypi.org/raspios_lite_armhf_latest'
