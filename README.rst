@@ -3,8 +3,8 @@ Grafana Kiosk OS
 
 This combines two great projects to give you an easy to deploy image for showing Grafana dashboards on a TV.
 
-* `CustomPiOS <https://github.com/guysoft/CustomPiOS>`
-* `Grafana Kiosk <https://github.com/grafana/grafana-kiosk>`
+* `CustomPiOS <https://github.com/guysoft/CustomPiOS>`_
+* `Grafana Kiosk <https://github.com/grafana/grafana-kiosk>`_
 
 Grafana Kiosk can handle logging into Grafana automatically and displaying a dashboard or playlist.
 
@@ -49,4 +49,4 @@ The pxe module removes the swap creation and partition resizing features that ar
 deploytopi.sh
 -------------
 
-This script is probably only useful to me. It relies on my `rpi-boot-server <https://github.com/grantemsley/rpi-boot-server>` setup and a home automation relay flashed with `Tasmota <https://tasmota.github.io/docs/>` to build the image, extract it and put it on the nfs server, and reboot an actually raspberry pi for testing on real hardware.
+This script is probably only useful to me. It relies on my `rpi-boot-server <https://github.com/grantemsley/rpi-boot-server>`_ setup and a home automation relay flashed with `Tasmota <https://tasmota.github.io/docs/>`_ to build the image, extract it and put it on the nfs server, and reboot an actually raspberry pi for testing on real hardware.
