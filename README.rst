@@ -21,7 +21,7 @@ Optionally connect a button between GPIO16 and ground to manually restart the ki
 Building
 --------
 
-Build on a Ubuntu, Debian or Raspbian system with:
+Build on a Ubuntu, Debian or Raspbian system with::
 
     sudo apt install coreutils p7zip-full qemu-user-static
     git clone https://github.comg/uysoft/CustomPiOS.git
