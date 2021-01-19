@@ -1,0 +1,11 @@
+general:
+  kiosk-mode: tv
+  autofit: true
+  lxde: false
+target:
+  login-method: anon
+  username: user
+  password: changeme
+  playlist: true
+  URL: https://play.grafana.org/playlists/play/9
+  ignore-certificate-errors: false

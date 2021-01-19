@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# Minimize module
+# Removes files that aren't strictly needed to reduce image size
+# For use primarily with systems people aren't logging into to use
+# Written by Grant Emsley <grant@emsley.ca>
+# GPL V3
+########
+
+set -e
+set -x
+
+
+if [ "$MINIMIZE_ENABLED" == "yes" ]
+then
+
+	# Some of this comes from https://gist.github.com/hhromic/78e3d849ec239b6a4789ae8842701838
+	# The rest comes from just trying to remove things and seeing what can be removed without also removing packages that are needed
+
+	apt remove -y --purge bluez bluez-firmware dpkg-dev libraspberrypi-dev libraspberrypi-doc manpages manpages-dev 
+	apt remove -y --purge dosfstools build-essential cifs-utils locales samba-common vim-common vim-tiny vim-runtime
+	apt remove -y --purge geoip-database groff-base xserver-xorg-input-wacom xserver-xorg-video-amdgpu xserver-xorg-video-ati
+	apt remove -y --purge xserver-xorg-video-nouveau xserver-xorg-video-radeon xserver-xorg-video-vesa
+	apt remove -y --purge gtk2-engines-pixbuf gnome-accessibility-themes gnome-themes-extra gnome-themes-extra-data
+	apt remove -y --purge firmware-atheros firmware-brcm80211 firmware-libertas firmware-misc-nonfree firmware-realtek flashrom
+	apt remove -y --purge strace gcc gdb make perl perl-modules-5.28 triggerhappy plymouth v4l-utils tasksel popularity-contest
+	apt remove -y --purge libglib2.0-data libc-l10n gdbm-l10n ncdu pciutils usb-modeswitch usb-modeswitch-data rsyslog
+	apt remove -y --purge bash-completion bzip2 console-setup console-setup-linux cpp debconf-i18n dmidecode dpkg-dev
+	apt remove -y --purge ed htop x11-xserver-utils xorg-docs-core info install-info alsa-utils raspi-config desktop-base
+	apt remove -y --purge rsync fuse rpi-update curl pigz python2 python2.7 rpi-eeprom rpi-eeprom-images xz-utils xbitmaps
+
+	#Mark all libraries as autoinstalled, so they are autoremoved when no longer required.
+	dpkg-query -Wf '${binary:Package}\n' 'lib*[!raspberrypi-bin]' | xargs apt-mark auto
+
+	rm -rf /usr/share/doc/*
+	rm -rf /usr/share/man/*
+	rm -rf /usr/share/groff/*
+	rm -rf /usr/share/info/*
+	rm -rf /usr/share/lintian/*
+	rm -rf /usr/share/linda/*
+	rm -rf /var/cache/man/*
+	rm -rf /usr/share/locale/*
+	rm -rf /var/cache/apt/*
+	rm -rf /var/log/*
+
+	apt-get clean
+	apt-get autoremove -y
+
+	# Fill all blank space with zeros to make it compress better
+	dd if=/dev/zero of=/deleteme || true
+	rm /deleteme
+
+fi

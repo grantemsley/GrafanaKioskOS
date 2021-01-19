@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# PXE module
+# Disables swap file and partition resizing
+# Written by Grant Emsley <grant@emsley.ca>
+# GPL V3
+########
+
+
+if [ "$PXE_ENABLED" == "yes" ]
+then
+	apt-get remove -y --purge dphys-swapfile
+	systemctl disable resize2fs_once
+
+	# Disable resizing in cmdline.txt
+	sed -i 's| init=/usr/lib/raspi-config/init_resize\.sh||' /boot/cmdline.txt
+	sed -i 's| sdhci\.debug_quirks2=4||' /boot/cmdline.txt
+fi

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Grafana Kiosk module
+# Sets up grafana-kiosk to run automatically on boot
+# Written by Grant Emsley <grant@emsley.ca>
+# GPL V3
+########
+
+
+# Source error handling, leave this in place
+set -x
+set -e
+
+source /common.sh
+install_cleanup_trap
+
+unpack /filesystem/home/pi /home/"${BASE_USER}" "${BASE_USER}"
+unpack /filesystem/home/root /root root
+unpack /filesystem/boot /boot
+unpack /filesystem/root /
+
+if [ "$GRAFANAKIOSKOS_SPLASHSCREEN" == "yes" ]
+then
+	apt-get install -y fbi
+	sed -i 's/$/ logo.nologo consoleblank=0 loglevel=0 quiet/' /boot/cmdline.txt
+	#echo "disable_splash=1" >> /boot/config.txt
+	systemctl enable splashscreen.service
+	systemctl disable getty@tty1
+fi
+
+# Install required packages
+apt-get -y install chromium-browser xdotool
+
+# Get kiosk release
+wget "$GRAFANAKIOSKOS_KIOSKRELEASE" -O /usr/local/bin/grafana-kiosk
+chmod +x /usr/local/bin/grafana-kiosk
+

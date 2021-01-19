@@ -1,0 +1,10 @@
+[Unit]
+Description=GPIO Button
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/bin/button.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,1 @@
+[ -n "$PXE_ENABLED" ] || PXE_ENABLED=yes

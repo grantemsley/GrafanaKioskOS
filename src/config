@@ -1,0 +1,27 @@
+export DIST_NAME=GrafanaKioskOS
+export DIST_VERSION=1.0.0
+export MODULES="base(network,admin-toolkit,gui,grafanakioskos,button,pxe,disable-services(minimize))"
+
+
+# When enabled, disables swap file and partition resizing which cause issues with network booting
+# If you intend to write this image to an SD card, you should disable this.
+export PXE_ENABLED=no
+
+# Minimize the image by removing all unnecessary packages, documentation, etc.
+export MINIMIZE_ENABLED=no
+
+# Settings for securing Pi - enable is desired
+# These will create a new account with password and ssh key you specifiy. The pi account will still have its default password,
+# but with SSH password authentication disabled only your new user with it's SSH key will be able to SSH in.
+#export ADMIN_TOOLKIT_NAME=yourname
+#export ADMIN_TOOLKIT_PASSWORD=changeme
+#export ADMIN_TOOLKIT_SSH="ssh-rsa ...=="
+#export ADMIN_TOOLKIT_SSH_NO_PASS=yes
+
+
+# Run apt-get update && apt-get upgrade to upgrade all packages. Takes longer to build.
+export ADMIN_TOOLKIT_UPDATE_PACKAGES=yes
+
+export ADMIN_TOOLKIT_REMOVE_NETWORK_MANAGER=yes
+export GUI_INCLUDE_ACCELERATION=no
+export GUI_STARTUP_SCRIPT=/home/pi/start_grafana_kiosk.sh

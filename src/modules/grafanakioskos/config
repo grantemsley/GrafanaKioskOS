@@ -1,0 +1,4 @@
+# Show splash screen on boot. File goes in /boot/splash.png and should be 1920x1080
+[ -n "$GRAFANAKIOSKOS_SPLASHSCREEN" ] || GRAFANAKIOSKOS_SPLASHSCREEN=yes
+
+GRAFANAKIOSKOS_KIOSKRELEASE=https://github.com/grafana/grafana-kiosk/releases/download/v1.0.2/grafana-kiosk.linux.armv7

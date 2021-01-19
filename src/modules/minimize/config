@@ -1,0 +1,1 @@
+[ -n "$MINIMIZE_ENABLED" ] || MINIMIZE_ENABLED=yes
