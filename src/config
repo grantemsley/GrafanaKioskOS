@@ -10,11 +10,10 @@ export PXE_ENABLED=no
 # Minimize the image by removing all unnecessary packages, documentation, etc.
 export MINIMIZE_ENABLED=no
 
-# Settings for securing Pi - enable is desired
-# These will create a new account with password and ssh key you specifiy. The pi account will still have its default password,
-# but with SSH password authentication disabled only your new user with it's SSH key will be able to SSH in.
-#export ADMIN_TOOLKIT_NAME=yourname
-#export ADMIN_TOOLKIT_PASSWORD=changeme
+# Settings for securing Pi - enable if desired
+# This will change the password for the pi account to the one you specify, add your SSH key, and disable password authentication for SSH
+#export ADMIN_TOOLKIT_NAME=pi
+#export ADMIN_TOOLKIT_PASSWORD=raspberry
 #export ADMIN_TOOLKIT_SSH="ssh-rsa ...=="
 #export ADMIN_TOOLKIT_SSH_NO_PASS=yes
 
