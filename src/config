@@ -2,6 +2,8 @@ export DIST_NAME=GrafanaKioskOS
 export DIST_VERSION=1.0.0
 export MODULES="base(network,admin-toolkit,gui,grafanakioskos,button,pxe,disable-services(minimize))"
 
+# Enlarge disk before building - build was running out of disk space and failing with the default +200MB
+export BASE_IMAGE_ENLARGEROOT=600
 
 # When enabled, disables swap file and partition resizing which cause issues with network booting
 # If you intend to write this image to an SD card, you should disable this.
